@@ -1,0 +1,7 @@
+[user]
+	email = sumulige@gmail.com
+	name = sumulige
+[core]
+	pager = bat
+[diff]
+	colorMoved = default
