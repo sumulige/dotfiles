@@ -13,6 +13,7 @@
 **特点**:
 - ⚡ **极速启动**: Zsh 启动时间 ~127ms
 - 🤖 **AI 自治**: Claude Code 深度集成，自动化记忆和任务管理
+- 📦 **一键安装**: `./install.sh full` 自动化环境搭建
 - 📚 **完整文档**: 每个配置都有详细说明
 - 🔄 **可追溯**: 所有决策和变更都有记录
 
@@ -22,6 +23,7 @@
 
 ```
 dotfiles/
+├── install.sh                 ⚡ 一键安装脚本
 ├── .claude/                    # AI 自治记忆系统核心 ⭐
 │   ├── ANCHORS.md             # 技能锚点索引
 │   ├── CLAUDE.md              # AI 协作配置
@@ -33,6 +35,9 @@ dotfiles/
 │   ├── hooks/                 # 自动化钩子 (10个)
 │   ├── skills/                # 技能库
 │   └── thinking-routes/       # 思维轨迹系统
+├── brew/                       # Homebrew 包管理 ⚡
+│   ├── Brewfile.core          # 核心包 (Shell, Git, 编辑器)
+│   └── Brewfile.tools         # 工具包 (开发工具, 监控, AI)
 ├── development/               # 开发任务管理
 │   └── todos/                 # 任务追踪系统
 ├── git/                       # Git 配置
@@ -58,49 +63,58 @@ dotfiles/
 
 ## 快速开始
 
-### 1. 克隆仓库
+### 一键安装 (推荐)
 
 ```bash
+# 1. 克隆仓库
 git clone https://github.com/sumulige/dotfiles.git ~/Documents/dotfiles
+
+# 2. 一键安装 (核心 + 工具 + 配置)
 cd ~/Documents/dotfiles
+./install.sh full
+
+# 3. 重启终端
 ```
 
-### 2. 安装依赖
+### 安装层级
 
 ```bash
-# 必需工具
-brew install zimfw atuin zoxide direnv eza bat ripgrep fzf lazygit
-
-# 字体
-brew install --cask font-jetbrains-mono-nerd-font
+./install.sh core   # 核心包 (Shell, Git, 编辑器, 基础工具)
+./install.sh tools  # 核心 + 工具包 (语言工具, 监控, AI)
+./install.sh full   # 完整安装 (含配置链接, Zim 初始化)
 ```
 
-### 3. 链接配置
+### 手动安装
+
+如果偏好手动控制：
 
 ```bash
-# Zsh
+# 安装 Homebrew (如果未安装)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 安装核心包
+brew bundle --file=brew/Brewfile.core
+
+# 安装工具包 (可选)
+brew bundle --file=brew/Brewfile.tools
+
+# 链接配置文件
 ln -sf ~/Documents/dotfiles/zsh/.zshrc ~/.zshrc
 ln -sf ~/Documents/dotfiles/zsh/.zimrc ~/.zimrc
-
-# Git
 ln -sf ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
+
+# 初始化 Zim
+zimfw install
 ```
 
-### 4. 配置 iTerm2
+### 配置 iTerm2
 
 1. 打开 iTerm2 → Settings → Profiles
 2. 点击 "Other Actions..." → "Import JSON Profiles..."
 3. 选择 `iterm2/OneDarkPro.json`
 4. 设置为默认 Profile
 
-### 5. 初始化 Zim
-
-```bash
-# 重启终端后运行
-zimfw install
-```
-
-### 6. 配置 atuin (可选)
+### 配置 atuin (可选)
 
 ```bash
 atuin register
@@ -121,6 +135,50 @@ atuin import zsh
 | **ripgrep** | 快速搜索 | `rg <pattern>` |
 | **fzf** | 模糊查找 | 集成到各种工具 |
 | **lazygit** | Git TUI | `lg` |
+
+---
+
+## Homebrew 管理
+
+### 分层包管理
+
+| 文件 | 包数量 | 说明 |
+|------|--------|------|
+| `Brewfile.core` | 32 | 核心包 (每日使用) |
+| `Brewfile.tools` | ~20 | 工具包 (开发增强) |
+
+### 安装命令
+
+```bash
+# 安装核心包
+brew bundle --file=brew/Brewfile.core
+
+# 安装工具包
+brew bundle --file=brew/Brewfile.tools
+
+# 检查是否缺少包
+brew bundle --file=brew/Brewfile.core check
+
+# 清理未列出的包
+brew bundle --file=brew/Brewfile.core cleanup
+```
+
+### 维护命令
+
+```bash
+# 检查过期包
+brew outdated
+
+# 升级所有包
+brew upgrade
+
+# 清理缓存
+brew cleanup
+```
+
+### 性能优化
+
+已配置 `HOMEBREW_NO_AUTO_UPDATE=1`，brew 命令响应时间从 5-10秒 降至 ~1秒。
 
 ---
 
@@ -190,6 +248,12 @@ asciinema play development/tests/demo.cast
 ---
 
 ## 常见问题
+
+### Q: 新电脑如何快速搭建环境？
+A: 运行 `git clone https://github.com/sumulige/dotfiles.git ~/Documents/dotfiles && cd ~/Documents/dotfiles && ./install.sh full`
+
+### Q: 如何添加新的 Homebrew 包？
+A: 编辑 `brew/Brewfile.core` (核心包) 或 `brew/Brewfile.tools` (工具包)，然后运行 `brew bundle --file=brew/Brewfile.core`
 
 ### Q: 如何添加新的 zsh 插件？
 A: 编辑 `~/.zimrc`，添加 `zmodule <plugin-name>`，然后运行 `zimfw install`
