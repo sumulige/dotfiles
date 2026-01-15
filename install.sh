@@ -109,10 +109,7 @@ link_dotfiles() {
     print_success "Git 配置已链接"
 
     # Neovim
-    mkdir -p ~/.config/nvim
-    if [ -f "$DOTFILES_DIR/nvim/init.vim" ]; then
-        ln -sf "$DOTFILES_DIR/nvim/init.vim" ~/.config/nvim/init.vim
-    fi
+    ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
     print_success "Neovim 配置已链接"
 }
 
@@ -152,6 +149,7 @@ show_completion() {
     echo "  2. 运行: zimfw install"
     echo "  3. 配置 iTerm2: 导入 iterm2/OneDarkPro.json"
     echo "  4. 配置 atuin: atuin register && atuin import zsh"
+    echo "  5. 启动 Neovim 自动安装插件: nvim"
     echo ""
     echo "管理命令："
     echo "  brew update       # 更新 brew"

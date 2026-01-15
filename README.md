@@ -38,6 +38,10 @@ dotfiles/
 ├── brew/                       # Homebrew 包管理 ⚡
 │   ├── Brewfile.core          # 核心包 (Shell, Git, 编辑器)
 │   └── Brewfile.tools         # 工具包 (开发工具, 监控, AI)
+├── nvim/                       # Neovim 配置 ⚡
+│   ├── init.lua               # 主配置
+│   ├── lua/config/            # 配置模块
+│   └── lua/plugins/           # 插件配置
 ├── development/               # 开发任务管理
 │   └── todos/                 # 任务追踪系统
 ├── git/                       # Git 配置
