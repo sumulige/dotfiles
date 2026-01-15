@@ -1,0 +1,22 @@
+=== Dotfiles 测试报告 ===
+测试时间: 2026-01-16 00:45:05
+主机名: M3
+macOS: 14.6
+
+启动时间: 
+atuin: atuin 18.11.0 ()
+zoxide: zoxide 0.9.8
+direnv: 2.37.1
+eza: eza - A modern, maintained replacement for ls
+bat: bat 0.26.1
+rg: ripgrep 15.1.0
+fzf: 0.67.0 (Homebrew)
+lazygit: commit=, build date=, build source=Homebrew, version=0.58.1, os=darwin, arch=arm64, git version=2.52.0
+Git 用户名: sumulige
+Git 邮箱: [已设置]
+
+=== 测试汇总 ===
+总计: 29
+通过: 29 (100%)
+失败: 0
+跳过: 0
