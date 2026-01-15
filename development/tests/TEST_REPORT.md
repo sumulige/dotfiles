@@ -3,6 +3,7 @@
 > 全面测试 dotfiles 配置并验证功能
 
 **测试时间**: 2026-01-16 00:45:05
+**录制时间**: 2025-01-16 (asciinema cast)
 **测试人**: Claude (Opus 4.5)
 **环境**: macOS 14.6 (Darwin 23.6.0) on M3
 
@@ -26,11 +27,11 @@
 | 指标 | 结果 | 状态 |
 |------|------|------|
 | 启动时间 | ~117ms | ✅ 通过 |
+| 录制实测 | ~209ms | ✅ 通过 |
 
 ```
-real    0m0.117s
-user    0m0.050s
-sys     0m0.050s
+real    0m0.117s  (测试脚本)
+real    0m0.209s  (asciinema 录制)
 ```
 
 **结论**: Zsh 启动时间 <150ms，性能优秀！比 Oh My Zsh (~470ms) 快 **75%**。
@@ -113,6 +114,26 @@ sys     0m0.050s
 | `iterm2/OneDarkPro.itermcolors` | ✅ |
 | `iterm2/com.googlecode.iterm2.plist` | ✅ |
 
+### 录制信息
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              asciinema 录制元数据                            │
+├─────────────────────────────────────────────────────────────┤
+│  终端类型:    xterm-256color                                 │
+│  终端尺寸:    82 × 36                                       │
+│  终端软件:    iTerm2 3.6.6                                  │
+│  主题:        One Dark Pro                                  │
+│  录制时间:    2025-01-16                                    │
+│  录制文件:    demo.cast                                     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**本地播放**:
+```bash
+asciinema play development/tests/demo.cast
+```
+
 ---
 
 ## 功能演示
@@ -167,3 +188,6 @@ Ctrl+R          # 搜索命令历史
 - [test-results.txt](./test-results.txt) - 原始测试输出
 - [TEST_PLAN.md](./TEST_PLAN.md) - 测试计划
 - [test-dotfiles.sh](./test-dotfiles.sh) - 测试脚本
+- [demo.cast](./demo.cast) - asciinema 录制文件
+- [RECORDING_GUIDE.md](./RECORDING_GUIDE.md) - 录制指南
+- [record-demo.sh](./record-demo.sh) - 录制脚本

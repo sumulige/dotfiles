@@ -2,6 +2,8 @@
 
 > 展示 dotfiles 项目的核心功能和使用方法
 
+> **关于颜色渲染**: GitHub Markdown 不支持终端 ANSI 颜色代码，本文档中的示例在终端中实际运行时会有语法高亮和颜色显示。如需查看彩色效果，请运行 `demo-simple.sh` 脚本。
+
 ---
 
 ## 功能概览
@@ -63,28 +65,49 @@ user@hostname ~/Documents/dotfiles
 
 ### 使用示例
 
-#### 智能目录跳转 (zoxide)
+#### 智能目录跳转 (zoxide) - 5 例
 ```bash
-$ z dotfiles      # 跳转到 dotfiles 目录
-$ z docs          # 跳转到最近访问的 docs 目录
+$ z dotfiles      # 精确匹配跳转
+$ z docs          # 跳转到 docs 目录
 $ z d             # 模糊匹配包含 d 的目录
+$ z -             # 返回上一个目录
+$ zi dotfiles     # 交互式选择目录
 ```
 
-#### 现代文件列表 (eza)
+#### 现代文件列表 (eza) - 5 例
 ```bash
 $ ll              # 详细列表，带图标
 $ lt              # 树状结构，2级深度
+$ la              # 所有文件（含隐藏）
+$ lh              # 人类可读大小
+$ lg              # 按文件大小排序
 ```
 
-#### 语法高亮查看 (bat)
+#### 语法高亮查看 (bat) - 5 例
 ```bash
 $ cat ~/.zshrc   # 带行号、语法高亮
 $ catp config    # 分页查看
+$ cat -n file    # 显示行号
+$ cat -l py      # 指定语言高亮
+$ cat -A file    # 显示所有字符
 ```
 
-#### Git 图形界面 (lazygit)
+#### 快速搜索 (ripgrep) - 5 例
+```bash
+$ rg pattern     # 递归搜索当前目录
+$ rg -i pattern  # 忽略大小写
+$ rg -l pattern  # 只显示匹配文件名
+$ rg -C 2 pattern # 显示前后2行上下文
+$ rg -t py pattern # 只搜索 Python 文件
+```
+
+#### Git 操作 (lazygit + 别名) - 5 例
 ```bash
 $ lg              # 启动 lazygit TUI
+$ gs              # git status 快捷方式
+$ gl              # git log 最近10条
+$ gd              # git diff 变更
+$ gp              # git push 推送
 ```
 
 ---
@@ -92,26 +115,66 @@ $ lg              # 启动 lazygit TUI
 ## 3. 别名功能演示
 
 ### 常用别名
-| 别名 | 命令 | 说明 |
-|------|------|------|
-| `ll` | `eza -la --icons` | 详细列表 |
-| `lt` | `eza --tree --level=2` | 树状结构 |
-| `cat` | `bat --paging=never` | 语法高亮 |
-| `catp` | `bat` | 分页查看 |
-| `gs` | `git status` | Git 状态 |
-| `ga` | `git add` | Git 添加 |
-| `gc` | `git commit` | Git 提交 |
-| `gp` | `git push` | Git 推送 |
-| `gl` | `git log --oneline -10` | Git 日志 |
-| `gd` | `git diff` | Git 差异 |
-| `lg` | `lazygit` | Git TUI |
-| `top` | `htop` | 系统监控 |
+
+#### 文件操作 - 5 例
+```bash
+$ ll              # eza -la --icons  (详细列表)
+$ lt              # eza --tree --level=2  (树状结构)
+$ cat file.txt    # bat --paging=never  (语法高亮)
+$ catp file.txt   # bat  (分页查看)
+$ top             # htop  (系统监控)
+```
+
+#### Git 操作 - 5 例
+```bash
+$ gs              # git status
+$ ga .            # git add .
+$ gc -m "msg"     # git commit -m "msg"
+$ gp              # git push
+$ gl              # git log --oneline -10
+```
+
+#### 搜索与跳转 - 5 例
+```bash
+$ z dotfiles      # zoxide 智能跳转
+$ rg pattern      # ripgrep 搜索
+$ rg -i pattern   # ripgrep 忽略大小写
+$ fzf             # 模糊查找交互
+$ cd -            # 返回上一目录 (zoxide 增强)
+```
 
 ---
 
 ## 4. AI 记忆系统演示
 
-### 文件结构
+### 锚点使用示例 - 5 例
+```markdown
+[doc:paradigm]      # Personal Panopticon 开发范式
+[config:zsh]       # Zsh 配置
+[doc:atuin]         # atuin 使用指南
+[project:kickoff]   # 项目启动清单
+[project:proposal]  # 项目计划书
+```
+
+### 记忆文件使用 - 5 例
+```bash
+# 快速定位功能
+$ cat .claude/ANCHORS.md | grep zoxide    # 查找 zoxide 锚点
+$ cat .claude/MEMORY.md | tail -20        # 查看最新变更
+$ cat .claude/PROJECT_LOG.md | grep iTerm # 查看 iTerm 相关历史
+$ cat .claude/TASK_PLAN.md                # 查看任务执行计划
+$ cat .claude/PROJECT_KICKOFF.md          # 查看项目启动清单
+```
+
+### 命令历史搜索 (atuin) - 5 例
+```bash
+# 按 Ctrl+R 触发搜索模式
+$ git commit      # 搜索包含 "git commit" 的历史
+$ brew install    # 搜索安装命令历史
+$ docker run      # 搜索 docker 命令
+$ nvim config     # 搜索编辑文件历史
+$ zsh             # 搜索 shell 命令
+```
 ```
 .claude/
 ├── ANCHORS.md       (114 行) - 技能锚点索引
@@ -196,6 +259,33 @@ zimfw install
 
 # 6. 重启终端
 ```
+
+---
+
+## 8. 可播放演示
+
+### asciinema 录制
+
+本项目包含终端录制文件 `demo.cast`，可以在本地播放查看真实效果：
+
+```bash
+# 安装播放器
+brew install asciinema
+
+# 播放录制
+asciinema play development/tests/demo.cast
+```
+
+**录制内容**:
+- Shell 启动时间实测
+- 所有现代工具版本信息
+- 文件列表演示 (eza)
+- 语法高亮演示 (bat)
+- 快速搜索演示 (ripgrep)
+- Git 状态演示
+- AI 记忆系统文件列表
+
+**终端主题**: One Dark Pro (散光优化版)
 
 ---
 

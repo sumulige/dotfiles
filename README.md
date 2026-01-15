@@ -124,6 +124,30 @@ atuin import zsh
 
 ---
 
+## 演示
+
+### 终端录制
+
+本项目包含终端功能演示录制，可以本地播放查看真实效果：
+
+```bash
+# 安装 asciinema
+brew install asciinema
+
+# 播放演示
+asciinema play development/tests/demo.cast
+```
+
+**演示内容**:
+- Shell 启动时间实测
+- 现代工具版本信息
+- 文件列表、语法高亮、快速搜索演示
+- AI 记忆系统展示
+
+[查看更多演示文档](development/tests/DEMO.md)
+
+---
+
 ## 性能指标
 
 | 指标 | 数值 | 状态 |
