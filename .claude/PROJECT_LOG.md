@@ -19,6 +19,100 @@
 
 ## 构建历史
 
+### 2025-01-16: 全面优化日 - 测试/Brew/Neovim
+
+#### 事件
+完成三大系统优化：测试系统、Brew 性能优化、Neovim 现代化配置
+
+#### 测试系统
+- 创建 29 项自动化测试脚本 (100% 通过)
+- 生成测试报告和演示文档
+- 创建 asciinema 终端录制 (demo.cast，隐私已处理)
+
+#### Brew 性能优化
+| 优化项 | 效果 |
+|--------|------|
+| 缓存清理 | 释放 2.9GB 磁盘空间 |
+| 禁用 auto-update | 命令响应从 5-10s 降至 ~1.2s |
+| 停止自动更新服务 | 完全手动控制更新时机 |
+| 分层 Brewfile | 核心(32包) + 工具(~20包) |
+| Leaves 审计 | 32 个实际使用的包 |
+
+#### Neovim 现代化配置
+- Lua 配置架构 (比 Vimscript 快 10-100 倍)
+- lazy.nvim 延迟加载插件管理器
+- Treesitter 现代语法高亮
+- LSP 支持 (Go, Python, TS, Lua, Rust, C/C++)
+- FZF 集成 (复用现有 fzf + ripgrep)
+- UI 插件: lualine, bufferline, dashboard
+- Neovim 0.11+ API 兼容
+
+#### 一键安装
+| 文件 | 功能 |
+|------|------|
+| `install.sh` | 全自动环境搭建 (core/tools/full) |
+| `brew/Brewfile.core` | 核心包 (Shell, Git, 编辑器, 基础工具) |
+| `brew/Brewfile.tools` | 工具包 (语言工具, 监控, AI) |
+
+#### 生成的文件
+```
+development/tests/
+├── test-dotfiles.sh       # 自动化测试脚本
+├── TEST_REPORT.md         # 测试报告
+├── DEMO.md                # ASCII 演示文档
+├── record-demo.sh         # 录制脚本
+├── RECORDING_GUIDE.md     # 录制指南
+├── ASCIINEMA_EMBED.md     # 嵌入代码选项
+└── demo.cast              # 终端录制 (隐私已处理)
+
+nvim/
+├── init.lua               # 主配置
+├── lua/config/
+│   ├── options.lua        # 编辑器选项
+│   ├── keymaps.lua        # 键映射
+│   └── autocmds.lua       # 自动命令
+├── lua/plugins/
+│   ├── core.lua           # 核心插件
+│   ├── lsp.lua            # LSP + 补全
+│   └── ui.lua             # UI 插件
+├── README.md
+└── lazy-lock.json         # 插件版本锁定
+
+brew/
+├── Brewfile.core          # 核心包
+├── Brewfile.tools         # 工具包
+
+install.sh                 # 一键安装脚本
+```
+
+#### 更新的文件
+- `README.md` - 添加一键安装说明 + Neovim 章节
+
+#### 提交记录
+| Commit | 描述 |
+|--------|------|
+| bcd1349 | 测试报告 + asciinema 录制 |
+| d196cce | Brew 优化 + Brewfile |
+| 7f12158 | 分层 Brewfile + 一键安装 |
+| 230d559 | README 更新安装说明 |
+| 4bf6292 | Neovim 现代化配置 |
+| 4a6153c | install.sh 更新 + lazy-lock |
+| ee326c2 | README Neovim 章节 |
+| 20acf0a | Neovim LSP 0.11+ 兼容性修复 |
+
+#### 技术决策
+1. **Brew 分层管理** - 核心 vs 工具包，清晰职责分离
+2. **HOMEBREW_NO_AUTO_UPDATE** - 禁用自动更新，提升命令响应速度
+3. **lazy.nvim** - 延迟加载，启动性能优先
+4. **Lua 配置** - 比 Vimscript 快 10-100 倍
+5. **FZF 集成** - 复用现有工具，避免冗余
+6. **隐私保护** - demo.cast 中用户名已替换为 "user"
+
+#### 负责人
+Claude (Opus 4.5)
+
+---
+
 ### 2026-01-16: Manus Kickoff 工作流执行
 
 #### 事件
@@ -176,7 +270,9 @@ dotfiles/
 
 | 版本 | 日期 | 变更 |
 |------|------|------|
-| v1.0 | 2026-01-16 | Manus Kickoff 工作流首次运行 |
+| v1.2 | 2025-01-16 | 测试系统 + Brew 优化 + Neovim 配置 |
+| v1.1 | 2026-01-16 | Manus Kickoff 工作流首次运行 |
+| v1.0 | 2026-01-16 | 任务系统激活 |
 | v0.9 | 2026-01-15 | Zsh 迁移到 Zim fw |
 | v0.8 | 2026-01-15 | iTerm2 散光优化 |
 | v0.1 | 2025-01-15 | 项目初始化 |
@@ -186,16 +282,24 @@ dotfiles/
 ## 统计数据
 
 ### 文件统计
-- **配置文件**: 6
-- **文档文件**: 8
+- **配置文件**: 10 (+4: nvim, Brewfiles, install.sh)
+- **文档文件**: 15 (+7: tests, nvim README)
+- **测试文件**: 6
 - **钩子文件**: 10
 - **技能文件**: 1
 
 ### 代码统计
 - **Zsh 配置**: ~150 行
-- **文档**: ~2000+ 行
+- **Neovim 配置**: ~800 行 (Lua)
+- **测试脚本**: ~300 行
+- **文档**: ~3000+ 行
+
+### 包统计
+- **Brew formulae**: 100 (32 leaves)
+- **Brew casks**: 13
+- **Neovim 插件**: 20+
 
 ---
 
-**最后更新**: 2026-01-16
+**最后更新**: 2025-01-16
 **维护者**: Claude (Opus 4.5)

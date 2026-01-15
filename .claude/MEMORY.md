@@ -4,6 +4,73 @@
 
 ---
 
+## 2025-01-16: 全面优化日 - 测试/Brew/Neovim
+
+### 测试系统完成 ✅
+| 任务 | 文件 | 状态 |
+|------|------|------|
+| 测试脚本 | `development/tests/test-dotfiles.sh` | ✅ 29/29 通过 |
+| 测试报告 | `development/tests/TEST_REPORT.md` | ✅ |
+| 演示文档 | `development/tests/DEMO.md` | ✅ |
+| 录制脚本 | `development/tests/record-demo.sh` | ✅ |
+| 录制指南 | `development/tests/RECORDING_GUIDE.md` | ✅ |
+| 终端录制 | `development/tests/demo.cast` | ✅ (隐私已处理) |
+
+### Brew 性能优化 ✅
+| 优化项 | 效果 |
+|--------|------|
+| 缓存清理 | 释放 2.9GB |
+| 禁用 auto-update | 命令响应从 5-10s 降至 ~1s |
+| 停止自动更新服务 | 完全手动控制 |
+| 分层 Brewfile | 核心(32) + 工具(~20) |
+| Leaves 包 | 32 个实际使用包 |
+
+### 一键安装脚本 ✅
+| 文件 | 功能 |
+|------|------|
+| `install.sh` | 全自动环境搭建 |
+| `brew/Brewfile.core` | 核心包 |
+| `brew/Brewfile.tools` | 工具包 |
+
+### Neovim 现代化配置 ✅
+| 组件 | 说明 |
+|------|------|
+| `nvim/init.lua` | Lua 主配置 |
+| `nvim/lua/config/` | options, keymaps, autocmds 模块 |
+| `nvim/lua/plugins/` | core, lsp, ui 插件 |
+| lazy.nvim | 延迟加载插件管理器 |
+| Treesitter | 现代语法高亮 |
+| LSP 支持 | Go, Python, TS, Lua, Rust, C/C++ |
+| FZF 集成 | 使用已有 fzf + ripgrep |
+| 兼容性 | Neovim 0.11+ API |
+
+### 文档更新 ✅
+| 文件 | 更新内容 |
+|------|----------|
+| `README.md` | 一键安装说明 + Neovim 章节 |
+| `nvim/README.md` | Neovim 完整文档 |
+
+### 提交记录
+| Commit | 描述 |
+|--------|------|
+| bcd1349 | 测试报告 + asciinema 录制 |
+| d196cce | Brew 优化 + Brewfile |
+| 7f12158 | 分层 Brewfile + 一键安装 |
+| 230d559 | README 更新安装说明 |
+| 4bf6292 | Neovim 现代化配置 |
+| 4a6153c | install.sh 更新 + lazy-lock |
+| ee326c2 | README Neovim 章节 |
+| 20acf0a | Neovim LSP 0.11+ 兼容性修复 |
+
+### 技术决策
+1. **Brew 分层管理** - 核心 vs 工具包，清晰职责分离
+2. **HOMEBREW_NO_AUTO_UPDATE** - 禁用自动更新，提升命令响应速度
+3. **lazy.nvim** - 延迟加载，启动性能优先
+4. **Lua 配置** - 比 Vimscript 快 10-100 倍
+5. **FZF 集成** - 复用现有工具，避免冗余
+
+---
+
 ## 2026-01-16: Manus Kickoff 工作流执行 - 任务系统激活
 
 ### 执行内容
@@ -89,5 +156,5 @@
 
 ---
 
-**最后更新**: 2026-01-16
-**更新人**: Claude (Opus 4.5) - Manus Kickoff Workflow
+**最后更新**: 2025-01-16
+**更新人**: Claude (Opus 4.5)
