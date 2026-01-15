@@ -184,6 +184,16 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # ===== Node Version Manager (fnm) =====
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+# ===== Modern Tools (atuin, zoxide, direnv) =====
+# atuin - magical shell history
+eval "$(atuin init zsh)"
+
+# zoxide - smarter cd command
+eval "$(zoxide init zsh)"
+
+# direnv - automatic environment loading
+eval "$(direnv hook zsh)"
+
 # ===== Python Version Manager (pyenv) =====
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
