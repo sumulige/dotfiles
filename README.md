@@ -127,6 +127,56 @@ atuin import zsh
 
 ---
 
+## Neovim 配置
+
+本仓库包含现代化的 Neovim 配置（基于 Lua + lazy.nvim）。
+
+### 安装
+
+```bash
+# 一键安装已包含 nvim 配置链接
+./install.sh full
+
+# 或手动链接
+ln -sf ~/Documents/dotfiles/nvim ~/.config/nvim
+```
+
+### 首次启动
+
+```bash
+nvim
+```
+
+首次启动会自动：
+- 克隆所有插件（lazy.nvim）
+- 安装 Treesitter 解析器
+- 配置 LSP 服务器
+
+### 快捷键
+
+| 快捷键 | 功能 |
+|--------|------|
+| `<Space>ff` | 查找文件 |
+| `<Space>fg` | 搜索文本 |
+| `<Space>fb` | 缓冲区列表 |
+| `<Space>tt` | 浮动终端 |
+| `<Space>ca` | 代码操作 |
+| `gd` | 跳转定义 |
+| `K` | 文档悬浮 |
+
+### 支持的语言
+
+- Go (gopls)
+- Python (pyright)
+- TypeScript/JavaScript (ts_ls)
+- Lua (lua_ls)
+- Rust (rust_analyzer)
+- C/C++ (clangd)
+
+[查看 Neovim 完整文档](nvim/README.md)
+
+---
+
 ## 现代工具集成
 
 | 工具 | 用途 | 命令 |
@@ -242,6 +292,7 @@ asciinema play development/tests/demo.cast
 
 | 文档 | 描述 |
 |------|------|
+| `nvim/README.md` | Neovim 配置完整文档 |
 | `project-paradigm.md` | Personal Panopticon 开发范式 |
 | `iterm2/CONFIG.md` | iTerm2 完整配置指南 |
 | `zsh/docs/ZSH.md` | Zsh + Zim fw 配置概述 |
@@ -261,6 +312,9 @@ A: 编辑 `brew/Brewfile.core` (核心包) 或 `brew/Brewfile.tools` (工具包)
 
 ### Q: 如何添加新的 zsh 插件？
 A: 编辑 `~/.zimrc`，添加 `zmodule <plugin-name>`，然后运行 `zimfw install`
+
+### Q: 如何添加 Neovim 插件？
+A: 编辑 `nvim/lua/plugins/` 下的文件，添加插件配置。详见 [nvim/README.md](nvim/README.md)
 
 ### Q: 如何自定义 iTerm2 主题？
 A: 编辑 `iterm2/OneDarkPro.json` 中的颜色值，然后重新导入 Profile
