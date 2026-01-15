@@ -4,17 +4,16 @@
 
 return {
   -- ============================================
-  -- LSP 配置
+  -- LSP 配置 (Neovim 0.11+ API)
   -- ============================================
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neodev.nvim", opts = {} },  -- Lua LSP 增强
+      { "hrsh7th/cmp-nvim-lsp" },
     },
     config = function()
-      local lspconfig = require("lspconfig")
-
       -- 通用 LSP on_attach
       local on_attach = function(_, bufnr)
         local nnoremap = function(keys, func, desc)
@@ -35,7 +34,9 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-      -- LSP 服务器配置
+      -- LSP 服务器配置 (使用 Neovim 0.11+ 新 API)
+      local lspconfig = require("lspconfig")
+
       local servers = {
         gopls = {},
         pyright = {},
