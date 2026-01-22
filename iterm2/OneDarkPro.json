@@ -158,7 +158,9 @@
         "Alpha Component" : 1,
         "Green Component" : 0.753
       },
-      "Scrollback Lines" : 10000,
+      "Scrollback Lines" : 50000,
+      "Scrollback With Status Bar" : true,
+      "Scrollback in Alternate Screen" : true,
       "Normal Font" : "JetBrainsMonoNLNFM-Regular 17",
       "Ansi 13 Color" : {
         "Red Component" : 0.77600000000000002,

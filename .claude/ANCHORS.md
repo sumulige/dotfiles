@@ -52,6 +52,17 @@
 | `[config:iterm2]` | `iterm2/OneDarkPro.json` | iTerm2 Dynamic Profile |
 | `[config:iterm2-colors]` | `iterm2/OneDarkPro.itermcolors` | One Dark Pro colors (astigmatism optimized) |
 | `[doc:iterm2]` | `iterm2/CONFIG.md` | iTerm2 configuration documentation |
+| `[config:ghostty]` | `ghostty/config` | Ghostty main config (AI optimized) ⭐ |
+| `[config:ghostty-theme]` | `ghostty/themes/One Dark Pro` | Ghostty dark theme |
+| `[doc:ghostty]` | `ghostty/README.md` | Ghostty configuration documentation |
+| `[doc:ai-workflow]` | `zsh/docs/ai-terminal-workflow.md` | AI terminal workflow best practices ⭐ |
+
+### Sync & Hooks
+| Anchor | File Path | Purpose |
+|--------|-----------|---------|
+| `[script:sync]` | `sync.sh` | Config sync script (symlink management) ⭐ |
+| `[hook:post-merge]` | `hooks/git/post-merge` | Auto-sync after git pull |
+| `[hook:post-checkout]` | `hooks/git/post-checkout` | Prompt after clone |
 
 ### Version Control
 | Anchor | File Path | Purpose |
@@ -74,8 +85,10 @@
 
 | Module | Status | Notes |
 |--------|--------|-------|
-| Shell (Zsh) | ✅ Complete | Startup ~127ms |
-| Terminal (iTerm2) | ✅ Complete | One Dark Pro astigmatism optimized |
+| Shell (Zsh) | ✅ Complete | Startup ~127ms, AI aliases added |
+| Terminal (iTerm2) | ✅ Complete | One Dark Pro, 50k scrollback |
+| Terminal (Ghostty) | ✅ Complete | Quick Terminal, auto theme switch |
+| Sync System | ✅ Complete | sync.sh + git hooks |
 | AI Memory System | 🔄 Active | Framework ready, recording in progress |
 | Task Management | ⏳ Pending | System ready, needs tasks |
 | Skills | ⏳ Pending | manus-kickoff created |
@@ -110,5 +123,5 @@ cat <file>        # View file (bat)
 
 ---
 
-**Last updated**: 2026-01-16
-**Updated by**: Manus Kickoff Workflow
+**Last updated**: 2026-01-22
+**Updated by**: sumulige-claude 1.3.0 sync

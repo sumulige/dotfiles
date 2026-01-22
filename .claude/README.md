@@ -2,7 +2,7 @@
 
 > 本文档说明如何使用 Sumulige Claude (smc) 和 Claude Code
 
-@version: 1.0.0
+@version: 1.3.0
 
 ---
 

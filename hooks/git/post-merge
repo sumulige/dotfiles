@@ -1,0 +1,40 @@
+#!/bin/bash
+# ============================================
+# post-merge hook - git pull 后自动同步配置
+# ============================================
+# 当执行 git pull 成功后自动触发
+
+# 获取 dotfiles 目录
+DOTFILES_DIR="$(git rev-parse --show-toplevel)"
+
+# 检查是否有配置文件变更
+CHANGED_FILES=$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)
+
+# 需要触发同步的文件模式
+SYNC_PATTERNS=(
+    "zsh/"
+    "git/"
+    "nvim/"
+    "ghostty/"
+    "iterm2/"
+    "starship/"
+    "atuin/"
+    "sync.sh"
+)
+
+should_sync=false
+
+for pattern in "${SYNC_PATTERNS[@]}"; do
+    if echo "$CHANGED_FILES" | grep -q "^$pattern"; then
+        should_sync=true
+        break
+    fi
+done
+
+if $should_sync; then
+    echo ""
+    echo "🔄 检测到配置文件变更，自动同步中..."
+    "$DOTFILES_DIR/sync.sh" --quiet
+    echo "✅ 配置同步完成"
+    echo ""
+fi

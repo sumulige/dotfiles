@@ -1,0 +1,181 @@
+# =============================================================================
+# Ghostty Configuration - AI Terminal Optimized
+# =============================================================================
+# 基于 2025-2026 最佳实践
+# 版本要求: Ghostty 1.2.0+
+#
+# 参考: https://ghostty.org/docs/config
+#       https://samuellawrentz.com/blog/minimal-ghostty-config/
+
+# =============================================================================
+# 🎨 主题配置
+# =============================================================================
+# 1.2.0+ 使用 Title Case 格式（不再是 kebab-case）
+# 支持 light/dark 自动切换
+theme = light:One Light,dark:One Dark Pro
+
+# =============================================================================
+# 🔤 字体配置
+# =============================================================================
+font-family = JetBrains Mono NL
+font-size = 17
+
+# 字体加粗 - 某些字体在 macOS 上显示太细
+font-thicken = true
+
+# 连字支持（1.2.0 默认禁用，显式启用）
+font-feature = calt
+font-feature = liga
+
+# 行距 - 散光优化（提高可读性）
+adjust-cell-height = 25%
+
+# =============================================================================
+# 🪟 窗口配置
+# =============================================================================
+window-width = 120
+window-height = 35
+
+# 窗口 padding - 提升可读性和美观度
+window-padding-x = 16
+window-padding-y = 12
+window-padding-balance = true
+
+# macOS 原生外观
+window-decoration = auto
+macos-titlebar-style = unified
+
+# 新窗口继承工作目录
+window-inherit-working-directory = true
+window-inherit-font-size = true
+
+# =============================================================================
+# 📜 滚动配置 - AI 编程核心优化
+# =============================================================================
+# 大缓冲区 - AI 输出通常很长
+scrollback-limit = 50000
+
+# 滚动速度
+mouse-scroll-multiplier = 3
+
+# 备用屏幕滚动行为（less/vim）
+alternate-scroll = true
+
+# =============================================================================
+# ⌨️ Shell 集成 - Ghostty 杀手锏
+# =============================================================================
+# 自动注入 shell 集成（支持 bash, zsh, fish, elvish）
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# =============================================================================
+# 🖱️ 光标配置
+# =============================================================================
+cursor-style = bar
+cursor-style-blink = true
+
+# 光标颜色（亮蓝色 - 散光优化）
+cursor-color = #7DCFFF
+
+# 打字时隐藏光标
+mouse-hide-while-typing = true
+
+# =============================================================================
+# 📋 剪贴板配置
+# =============================================================================
+# 选中即复制
+copy-on-select = clipboard
+
+# 粘贴保护（防止意外执行危险命令）
+clipboard-paste-protection = true
+
+# 自动包裹链接
+clipboard-paste-bracketed-safe = true
+
+# =============================================================================
+# ⚡ Quick Terminal - macOS 隐藏神器
+# =============================================================================
+# 全局快捷键呼出浮动终端（类似 iTerm2 Hotkey Window）
+# 默认: 未绑定，推荐 Ctrl+` 或 Cmd+`
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+# Quick Terminal 样式
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.15
+
+# =============================================================================
+# 🎹 快捷键配置
+# =============================================================================
+# 分屏（与 iTerm2 保持一致）
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+
+# 标签页
+keybind = super+t=new_tab
+keybind = super+w=close_surface
+
+# 分屏导航
+keybind = super+alt+left=goto_split:left
+keybind = super+alt+right=goto_split:right
+keybind = super+alt+up=goto_split:top
+keybind = super+alt+down=goto_split:bottom
+
+# 调整分屏大小
+keybind = super+ctrl+left=resize_split:left,20
+keybind = super+ctrl+right=resize_split:right,20
+keybind = super+ctrl+up=resize_split:up,20
+keybind = super+ctrl+down=resize_split:down,20
+
+# 字体大小
+keybind = super+plus=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+keybind = super+0=reset_font_size
+
+# 滚动
+keybind = super+up=scroll_page_up
+keybind = super+down=scroll_page_down
+keybind = super+home=scroll_to_top
+keybind = super+end=scroll_to_bottom
+
+# 重载配置
+keybind = super+shift+comma=reload_config
+
+# 打开 Terminal Inspector（调试神器）
+keybind = super+shift+i=inspector:toggle
+
+# =============================================================================
+# 🍎 macOS 特定配置
+# =============================================================================
+# Option 键作为 Alt（对 CLI 工具很重要）
+macos-option-as-alt = true
+
+# 非激活窗格变暗
+unfocused-split-opacity = 0.85
+
+# =============================================================================
+# 🚀 性能优化
+# =============================================================================
+# 单实例模式（减少内存占用）
+gtk-single-instance = true
+
+# 等待 PWD 更新前的延迟
+window-title-delay-ms = 100
+
+# =============================================================================
+# 🛡️ 安全与确认
+# =============================================================================
+# 关闭窗口不确认（提高效率）
+confirm-close-surface = false
+
+# 安全粘贴确认
+clipboard-paste-protection = true
+
+# =============================================================================
+# 🎭 可选: 视觉效果
+# =============================================================================
+# 自定义着色器（取消注释以启用 CRT 效果）
+# custom-shader = crt.glsl
+
+# 背景透明度（0.0-1.0，需要合成器支持）
+# background-opacity = 0.95

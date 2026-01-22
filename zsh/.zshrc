@@ -136,6 +136,15 @@ alias gd="git diff"
 # ===== AI Support =====
 export CLAUDE_AUTO_UPDATE_PROMPT=false
 
+# Claude Code 快捷命令
+alias cc='claude'
+alias ccc='claude --continue'
+alias ccr='claude --resume'
+
+# ===== Pager Configuration =====
+# 让 less 内容保留在主屏幕，不使用 alternate screen
+export LESS='-R -X -F'
+
 # ===== Performance =====
 # Disable auto-title for tmux/zellij
 DISABLE_AUTO_TITLE="true"

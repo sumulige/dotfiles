@@ -1,0 +1,26 @@
+#!/bin/bash
+# ============================================
+# post-checkout hook - git clone/checkout 后提示
+# ============================================
+# 当切换分支或 clone 后触发
+
+# 参数: $1=前一个 HEAD, $2=新 HEAD, $3=是否切换分支(1)还是文件(0)
+OLD_HEAD=$1
+NEW_HEAD=$2
+IS_BRANCH_CHECKOUT=$3
+
+# 只在分支切换或 clone 时触发
+if [[ "$IS_BRANCH_CHECKOUT" == "1" ]]; then
+    DOTFILES_DIR="$(git rev-parse --show-toplevel)"
+
+    # 检查是否是首次 clone（OLD_HEAD 为空引用）
+    if [[ "$OLD_HEAD" == "0000000000000000000000000000000000000000" ]]; then
+        echo ""
+        echo "🎉 Dotfiles 仓库 clone 成功！"
+        echo ""
+        echo "运行以下命令完成配置:"
+        echo "  ./install.sh sync    # 同步配置 + 安装 hooks"
+        echo "  ./install.sh full    # 完整安装（含 Homebrew 包）"
+        echo ""
+    fi
+fi

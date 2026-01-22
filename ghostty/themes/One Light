@@ -1,0 +1,52 @@
+# =============================================================================
+# One Light Theme for Ghostty
+# =============================================================================
+# 亮色模式主题，与 One Dark Pro 配对使用
+
+# 背景和前景
+background = #fafafa
+foreground = #383a42
+
+# 选择颜色
+selection-background = #e5e5e6
+selection-foreground = #383a42
+
+# 光标
+cursor-color = #526fff
+cursor-text = #fafafa
+
+# =============================================================================
+# ANSI 颜色 (0-7: 普通, 8-15: 明亮)
+# =============================================================================
+
+# Black
+palette = 0=#383a42
+palette = 8=#4f525e
+
+# Red
+palette = 1=#e45649
+palette = 9=#e45649
+
+# Green
+palette = 2=#50a14f
+palette = 10=#50a14f
+
+# Yellow
+palette = 3=#c18401
+palette = 11=#c18401
+
+# Blue
+palette = 4=#4078f2
+palette = 12=#4078f2
+
+# Magenta
+palette = 5=#a626a4
+palette = 13=#a626a4
+
+# Cyan
+palette = 6=#0184bc
+palette = 14=#0184bc
+
+# White
+palette = 7=#a0a1a7
+palette = 15=#fafafa

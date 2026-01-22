@@ -31,27 +31,6 @@ development/todos/
 - [📋 待办任务](./backlog/) - 待规划
 - [📦 已归档](./archived/) - 历史记录
 
----
-
-## 当前任务状态
-
-### 🚧 进行中 (4)
-
-| 任务 | 优先级 | 负责人 | 创建时间 |
-|------|--------|--------|----------|
-| [创建 development/README.md](./active/2025-01-16-development-readme.md) | P2 | AI | 2026-01-16 |
-| [创建 dotfiles-usage skill](./active/2025-01-16-dotfiles-usage-skill.md) | P2 | AI | 2026-01-16 |
-| [创建 terminal-workflow skill](./active/2025-01-16-terminal-workflow-skill.md) | P2 | AI | 2026-01-16 |
-| [Neovim 配置](./active/2025-01-16-neovim-config.md) | P2 | AI+Human | 2026-01-16 |
-
-### ✅ 已完成 (0)
-
-暂无已完成的任务
-
-### 📋 待办 (0)
-
-暂无待办任务
-
 ## 使用方式
 
 ### 查看任务

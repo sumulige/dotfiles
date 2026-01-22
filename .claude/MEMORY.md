@@ -4,6 +4,85 @@
 
 ---
 
+## 2026-01-22: AI 终端编程优化 + 自动同步方案
+
+### 新增配置 ✅
+
+#### 1. Ghostty 终端配置
+| 文件 | 说明 |
+|------|------|
+| `ghostty/config` | 主配置 - 基于 2025-2026 最佳实践 |
+| `ghostty/themes/One Dark Pro` | 暗色主题（散光优化）|
+| `ghostty/themes/One Light` | 亮色主题 |
+| `ghostty/README.md` | 完整使用文档 |
+
+**核心特性**：
+- Quick Terminal: `Ctrl+\`` 全局呼出浮动终端
+- 自动主题切换: `light:One Light,dark:One Dark Pro`
+- Shell Integration: 自动注入 zsh 集成
+- 50000 行滚动缓冲
+
+#### 2. iTerm2 滚动优化
+| 修改项 | 值 | 说明 |
+|--------|-----|------|
+| Scrollback Lines | 50000 | 5 倍扩容 |
+| Scrollback in Alternate Screen | true | 修复退出 less/vim 跳顶部问题 |
+| Scrollback With Status Bar | true | 状态栏程序也保留滚动 |
+
+#### 3. Shell 配置增强
+| 新增 | 说明 |
+|------|------|
+| `alias cc` | claude |
+| `alias ccc` | claude --continue |
+| `alias ccr` | claude --resume |
+| `LESS='-R -X -F'` | 不使用 alternate screen |
+
+#### 4. 自动同步方案
+| 文件 | 用途 |
+|------|------|
+| `sync.sh` | 配置同步脚本（symlink 管理）|
+| `hooks/git/post-merge` | git pull 后自动同步 |
+| `hooks/git/post-checkout` | clone 后提示 |
+| `install.sh sync` | 新增 sync 子命令 |
+
+**工作流**：
+```
+Clone 后 → ./install.sh sync（一次性）
+之后 git pull → post-merge hook 自动同步
+```
+
+### 文档更新 ✅
+| 文件 | 说明 |
+|------|------|
+| `zsh/docs/ai-terminal-workflow.md` | AI 终端编程最佳实践 |
+| `ghostty/README.md` | Ghostty 配置文档 |
+
+### 技术决策
+1. **Ghostty Quick Terminal** - 替代 iTerm2 Hotkey Window，更轻量
+2. **自动主题切换** - Ghostty 1.2.0+ 原生支持，跟随系统
+3. **混合同步方案** - Git hooks + sync.sh，clone 后一次设置，之后自动
+4. **Symlink 而非复制** - 单一真相源，修改即同步
+
+---
+
+## 2026-01-22: sumulige-claude 1.3.0 同步
+
+### 同步检查 ✅
+
+| 组件 | 状态 | 说明 |
+|------|------|------|
+| settings.json | ✅ 已同步 | 钩子配置一致 |
+| commands/ | ✅ 已同步 | 9 个命令完整 |
+| skills/ | ✅ 已同步 | manus-kickoff 等 |
+| README.md | ✅ 已更新 | 版本号 1.0.0 → 1.3.0 |
+
+### 版本更新
+- sumulige-claude: 1.3.0
+- 源路径: `~/Documents/Antigravity/sumulige-claude`
+- CLI alias: `smc` → 本地开发版本
+
+---
+
 ## 2026-01-19: 联网优化审计
 
 ### 审计执行 ✅
@@ -199,6 +278,7 @@
 
 | 日期 | 变更 | 负责人 |
 |------|------|--------|
+| 2026-01-22 | AI 终端优化 + Ghostty 配置 + 自动同步方案 | Claude (Opus 4.5) |
 | 2026-01-19 | 联网优化审计，生成审计报告 | Claude (Opus 4.5) |
 | 2026-01-16 | 任务系统激活，填充 4 个活跃任务 | Claude (Opus 4.5) |
 | 2026-01-16 | Phase 1-3 完成，文档更新 | Claude (Opus 4.5) |
@@ -209,5 +289,5 @@
 
 ---
 
-**最后更新**: 2026-01-19
+**最后更新**: 2026-01-22
 **更新人**: Claude (Opus 4.5)

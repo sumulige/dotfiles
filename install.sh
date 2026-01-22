@@ -3,12 +3,13 @@
 # Dotfiles 一键安装脚本
 # ============================================
 # 用途: 新电脑快速搭建开发环境
-# 用法: ./install.sh [core|tools|full]
+# 用法: ./install.sh [core|tools|full|sync]
 #
 # 安装层级:
 #   core   - 核心包 (必需)
 #   tools  - 工具包 (开发增强)
-#   full   - 完整安装 (core + tools + optional)
+#   full   - 完整安装 (core + tools + 配置链接)
+#   sync   - 仅同步配置 + 安装 git hooks（推荐 clone 后首次运行）
 
 set -e
 
@@ -180,6 +181,12 @@ main() {
         tools)
             install_core
             install_tools
+            ;;
+        sync)
+            # 仅同步配置 + 安装 hooks（适合 clone 后或 pull 更新后）
+            print_step "运行配置同步..."
+            "$DOTFILES_DIR/sync.sh"
+            return 0
             ;;
         full|*)
             install_core
