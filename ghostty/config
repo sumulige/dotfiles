@@ -43,7 +43,7 @@ window-padding-balance = true
 
 # macOS 原生外观
 window-decoration = auto
-macos-titlebar-style = unified
+macos-titlebar-style = native
 
 # 新窗口继承工作目录
 window-inherit-working-directory = true
@@ -57,9 +57,6 @@ scrollback-limit = 50000
 
 # 滚动速度
 mouse-scroll-multiplier = 3
-
-# 备用屏幕滚动行为（less/vim）
-alternate-scroll = true
 
 # =============================================================================
 # ⌨️ Shell 集成 - Ghostty 杀手锏
@@ -158,9 +155,6 @@ unfocused-split-opacity = 0.85
 # =============================================================================
 # 单实例模式（减少内存占用）
 gtk-single-instance = true
-
-# 等待 PWD 更新前的延迟
-window-title-delay-ms = 100
 
 # =============================================================================
 # 🛡️ 安全与确认
