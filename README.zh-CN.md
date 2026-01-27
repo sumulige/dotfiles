@@ -2,12 +2,7 @@
 
 🌐 **Language**: [English](README.md) | **中文**
 
-[![GitHub Stars](https://img.shields.io/github/stars/sumulige/dotfiles?style=flat-square)](https://github.com/sumulige/dotfiles/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/sumulige/dotfiles?style=flat-square)](https://github.com/sumulige/dotfiles/commits)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![macOS](https://img.shields.io/badge/OS-macOS-black?style=flat-square&logo=apple)](https://www.apple.com/macos/)
-[![Zsh](https://img.shields.io/badge/Shell-Zsh-black?style=flat-square&logo=gnu-bash)](zsh/)
-[![Neovim](https://img.shields.io/badge/Editor-Neovim-green?style=flat-square&logo=neovim)](nvim/)
+[![GitHub Stars](https://img.shields.io/github/stars/sumulige/dotfiles?style=flat-square)](https://github.com/sumulige/dotfiles/stargazers) [![Last Commit](https://img.shields.io/github/last-commit/sumulige/dotfiles?style=flat-square)](https://github.com/sumulige/dotfiles/commits) [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE) [![macOS](https://img.shields.io/badge/OS-macOS-black?style=flat-square&logo=apple)](https://www.apple.com/macos/) [![Zsh](https://img.shields.io/badge/Shell-Zsh-black?style=flat-square&logo=gnu-bash)](zsh/) [![Neovim](https://img.shields.io/badge/Editor-Neovim-green?style=flat-square&logo=neovim)](nvim/)
 
 > AI 驱动的个人开发环境配置 - Personal Panopticon
 
