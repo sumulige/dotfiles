@@ -45,13 +45,19 @@ dotfiles/
 ├── development/               # 开发任务管理
 │   └── todos/                 # 任务追踪系统
 ├── git/                       # Git 配置
+├── ghostty/                   # Ghostty 终端配置 ✅
+│   ├── config                 # 主配置（AI 编程优化）
+│   ├── themes/                # 自定义主题
+│   └── README.md              # 使用说明
 ├── iterm2/                    # iTerm2 配置 ✅
 │   ├── OneDarkPro.json        # 动态 Profile
 │   ├── OneDarkPro.itermcolors # 颜色主题（散光优化）
 │   ├── CONFIG.md              # 配置文档
 │   └── README.md              # 使用说明
+├── starship/                  # Starship 提示符配置 ✅
+│   └── starship.toml          # 极简提示符
 ├── prompts/                   # Prompt 教学库
-├── zsh/                       # Zsh 配置 ✅
+├── zsh/                       # Zsh 配置 ✅ (Starship + 懒加载优化)
 │   ├── .zshrc                 # Zsh 主配置
 │   ├── .zimrc                 # Zim 模块配置
 │   └── docs/                  # Zsh 文档
@@ -330,5 +336,5 @@ MIT
 
 ---
 
-**最后更新**: 2026-01-19
+**最后更新**: 2026-01-27
 **维护者**: sumulige + Claude (Opus 4.5)

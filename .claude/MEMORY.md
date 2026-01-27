@@ -4,6 +4,61 @@
 
 ---
 
+## 2026-01-27: Shell 配置全面优化 + Starship 迁移
+
+### 修复问题 ✅
+
+#### 1. fnm/pyenv 懒加载 Bug 修复
+| 问题 | 修复 |
+|------|------|
+| `command python` 找不到 | 添加防重复加载标记 `$_PYENV_LOADED` |
+| 函数递归调用 | 使用 `command` 关键字绕过函数 |
+| 每次调用重复初始化 | 加载标记 + early return |
+
+#### 2. Powerlevel10k → Starship 迁移
+| 操作 | 说明 |
+|------|------|
+| 删除 P10k 代码块 | ~/.zshrc 减少 ~15 行 |
+| 删除 ~/.p10k.zsh | 90KB 配置文件 |
+| 清理 ~/.cache/p10k-* | 缓存文件 |
+| Starship 位置调整 | 移至 Zim 之后，避免 compinit 冲突 |
+
+#### 3. Ghostty 滚动优化
+| 配置 | 值 | 说明 |
+|------|-----|------|
+| `scroll-to-bottom` | `none` | 禁用自动滚动，查看历史不被打断 |
+
+### 新增配置 ✅
+
+#### 1. Starship 配置纳入版本控制
+| 文件 | 说明 |
+|------|------|
+| `starship/starship.toml` | 极简提示符配置 |
+
+### 文档更新 ✅
+| 文件 | 更新内容 |
+|------|----------|
+| `zsh/.zshrc` | 懒加载修复 + P10k 清理 |
+| `starship/starship.toml` | 新增 |
+| `ghostty/config` | 滚动优化 |
+
+### 技术决策
+1. **Starship 替代 P10k** - P10k 已进入 Life Support，Starship 是 Rust 实现的现代替代
+2. **懒加载防护** - 使用加载标记避免重复初始化
+3. **滚动行为** - 完全禁用自动滚动，手动控制更符合 AI 编程场景
+
+### 回归测试结果
+```
+✅ node --version  → v25.3.0
+✅ npm --version   → 11.7.0
+✅ python3 --version → Python 3.14.2
+✅ pyenv --version → pyenv 2.6.20
+✅ 新 shell 无警告
+✅ 所有别名正常
+```
+
+---
+
 ## 2026-01-22: AI 终端编程优化 + 自动同步方案
 
 ### 新增配置 ✅
@@ -278,6 +333,7 @@ Clone 后 → ./install.sh sync（一次性）
 
 | 日期 | 变更 | 负责人 |
 |------|------|--------|
+| 2026-01-27 | Shell 配置全面优化 + Starship 迁移 + Ghostty 滚动修复 | Claude (Opus 4.5) |
 | 2026-01-22 | AI 终端优化 + Ghostty 配置 + 自动同步方案 | Claude (Opus 4.5) |
 | 2026-01-19 | 联网优化审计，生成审计报告 | Claude (Opus 4.5) |
 | 2026-01-16 | 任务系统激活，填充 4 个活跃任务 | Claude (Opus 4.5) |
@@ -289,5 +345,5 @@ Clone 后 → ./install.sh sync（一次性）
 
 ---
 
-**最后更新**: 2026-01-22
+**最后更新**: 2026-01-27
 **更新人**: Claude (Opus 4.5)
