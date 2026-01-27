@@ -1,0 +1,67 @@
+# Starship 极简配置
+format = "$directory$git_branch$git_status$cmd_duration$line_break$character"
+add_newline = false
+
+[directory]
+style = "blue"
+format = "[$path]($style) "
+truncation_length = 3
+
+[git_branch]
+format = "[$branch]($style) "
+style = "green"
+
+[git_status]
+format = "[$modified$staged$untracked]($style) "
+modified = "!"
+staged = "+"
+untracked = "?"
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+
+[aws]
+disabled = true
+[azure]
+disabled = true
+[bun]
+disabled = true
+[c]
+disabled = true
+[docker_context]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[golang]
+disabled = true
+[gradle]
+disabled = true
+[haskell]
+disabled = true
+[java]
+disabled = true
+[julia]
+disabled = true
+[kotlin]
+disabled = true
+[nodejs]
+disabled = true
+[nim]
+disabled = true
+[python]
+disabled = true
+[rust]
+disabled = true
+[scala]
+disabled = true
+[swift]
+disabled = true
+[time]
+disabled = true
+[username]
+disabled = true
+[os]
+disabled = true
