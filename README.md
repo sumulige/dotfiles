@@ -73,17 +73,34 @@ dotfiles/
 
 ## 快速开始
 
-### 一键安装 (推荐)
+### 方式 1: 一行命令 (推荐)
 
 ```bash
-# 1. 克隆仓库
-git clone https://github.com/sumulige/dotfiles.git ~/Documents/dotfiles
+curl -fsSL https://raw.githubusercontent.com/sumulige/dotfiles/master/install-remote.sh | bash
+```
 
-# 2. 一键安装 (核心 + 工具 + 配置)
+### 方式 2: Homebrew
+
+```bash
+brew tap sumulige/tap
+brew install sumulige-dotfiles
+sumulige-dotfiles full
+```
+
+### 方式 3: npm / npx
+
+```bash
+npx @sumulige/dotfiles
+# 或
+npm install -g @sumulige/dotfiles && sumulige-dotfiles
+```
+
+### 方式 4: 手动克隆
+
+```bash
+git clone https://github.com/sumulige/dotfiles.git ~/Documents/dotfiles
 cd ~/Documents/dotfiles
 ./install.sh full
-
-# 3. 重启终端
 ```
 
 ### 安装层级
@@ -92,6 +109,7 @@ cd ~/Documents/dotfiles
 ./install.sh core   # 核心包 (Shell, Git, 编辑器, 基础工具)
 ./install.sh tools  # 核心 + 工具包 (语言工具, 监控, AI)
 ./install.sh full   # 完整安装 (含配置链接, Zim 初始化)
+./install.sh sync   # 仅同步配置 (已安装后更新)
 ```
 
 ### 手动安装

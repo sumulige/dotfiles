@@ -1,0 +1,48 @@
+{
+  "name": "@sumulige/dotfiles",
+  "version": "1.0.0",
+  "description": "Personal dotfiles with AI-driven configuration - Zsh, Neovim, Ghostty, and modern CLI tools",
+  "bin": {
+    "sumulige-dotfiles": "./bin/cli.js"
+  },
+  "scripts": {
+    "postinstall": "echo '\\n Run: sumulige-dotfiles\\n'"
+  },
+  "keywords": [
+    "dotfiles",
+    "zsh",
+    "neovim",
+    "ghostty",
+    "macos",
+    "terminal",
+    "shell",
+    "configuration"
+  ],
+  "author": "sumulige",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumulige/dotfiles.git"
+  },
+  "homepage": "https://github.com/sumulige/dotfiles#readme",
+  "bugs": {
+    "url": "https://github.com/sumulige/dotfiles/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "install.sh",
+    "install-remote.sh",
+    "sync.sh",
+    "brew/",
+    "zsh/",
+    "nvim/",
+    "git/",
+    "ghostty/",
+    "starship/",
+    "iterm2/",
+    "README.md"
+  ]
+}
