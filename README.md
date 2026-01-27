@@ -1,8 +1,37 @@
 # Personal Dotfiles
 
+🌐 **Language**: [English](README.en.md) | **中文**
+
+[![GitHub Stars](https://img.shields.io/github/stars/sumulige/dotfiles?style=flat-square)](https://github.com/sumulige/dotfiles/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/sumulige/dotfiles?style=flat-square)](https://github.com/sumulige/dotfiles/commits)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![macOS](https://img.shields.io/badge/OS-macOS-black?style=flat-square&logo=apple)](https://www.apple.com/macos/)
+[![Zsh](https://img.shields.io/badge/Shell-Zsh-black?style=flat-square&logo=gnu-bash)](zsh/)
+[![Neovim](https://img.shields.io/badge/Editor-Neovim-green?style=flat-square&logo=neovim)](nvim/)
+
 > AI 驱动的个人开发环境配置 - Personal Panopticon
 
 让 AI 成为你思维的延伸——在你睡觉时它仍在工作，在你忘记时它还记得，当你困惑时它已理清。
+
+---
+
+## 为什么选择这个项目？
+
+相比其他 dotfiles 管理方案，本项目的独特之处：
+
+| 特性 | 本项目 | chezmoi | yadm | 手动管理 |
+|------|--------|---------|------|----------|
+| 🤖 AI 记忆系统 | ✅ | ❌ | ❌ | ❌ |
+| ⚡ 开箱即用配置 | ✅ | ❌ | ❌ | ❌ |
+| 🚀 启动时间 < 150ms | ✅ | - | - | ⚠️ |
+| 📦 一键安装 | ✅ | ⚠️ | ⚠️ | ❌ |
+| 🔧 现代工具集成 | ✅ | ⚠️ | ⚠️ | ⚠️ |
+| 📚 完整文档 | ✅ | ✅ | ⚠️ | ❌ |
+
+**核心优势**：
+- **AI 自治记忆** - Claude Code 深度集成，自动记录决策和变更
+- **极速启动** - Zsh 启动 ~127ms，比 Oh My Zsh 快 3-4 倍
+- **现代工具链** - Starship、atuin、zoxide、eza、bat 等全套配置
 
 ---
 
