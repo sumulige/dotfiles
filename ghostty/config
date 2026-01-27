@@ -96,6 +96,9 @@ clipboard-paste-protection = true
 # 自动包裹链接
 clipboard-paste-bracketed-safe = true
 
+# 复制时裁剪尾部空白
+clipboard-trim-trailing-spaces = true
+
 # =============================================================================
 # ⚡ Quick Terminal - macOS 隐藏神器
 # =============================================================================
