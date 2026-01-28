@@ -70,6 +70,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # 懒加载 pyenv：仅在首次调用 python/pip 时初始化
+# 修复：非交互式 shell 中函数可能不存在，需要回退到直接命令
 _pyenv_load() {
   # 防止重复加载
   (( $_PYENV_LOADED )) && return 0
@@ -77,15 +78,46 @@ _pyenv_load() {
   unfunction python pip python3 pip3 pyenv 2>/dev/null
   eval "$(command pyenv init - zsh)"
 }
-python() { _pyenv_load && command python "$@" }
-pip() { _pyenv_load && command pip "$@" }
-python3() { _pyenv_load && command python3 "$@" }
-pip3() { _pyenv_load && command pip3 "$@" }
-pyenv() { _pyenv_load && command pyenv "$@" }
+python() {
+  if type _pyenv_load &>/dev/null; then
+    _pyenv_load && command python "$@"
+  else
+    command python "$@"
+  fi
+}
+pip() {
+  if type _pyenv_load &>/dev/null; then
+    _pyenv_load && command pip "$@"
+  else
+    command pip "$@"
+  fi
+}
+python3() {
+  if type _pyenv_load &>/dev/null; then
+    _pyenv_load && command python3 "$@"
+  else
+    command python3 "$@"
+  fi
+}
+pip3() {
+  if type _pyenv_load &>/dev/null; then
+    _pyenv_load && command pip3 "$@"
+  else
+    command pip3 "$@"
+  fi
+}
+pyenv() {
+  if type _pyenv_load &>/dev/null; then
+    _pyenv_load && command pyenv "$@"
+  else
+    command pyenv "$@"
+  fi
+}
 
 # ===== Node Version Manager (fnm) - Lazy Load =====
 # 懒加载 fnm：仅在首次调用 node/npm 时初始化
-export PATH="$HOME/.local/share/fnm:$PATH"
+# PATH 已在 .zshenv 中设置（支持非交互式 shell）
+# 修复：非交互式 shell 中函数可能不存在，需要回退到直接命令
 _fnm_load() {
   # 防止重复加载
   (( $_FNM_LOADED )) && return 0
@@ -93,11 +125,41 @@ _fnm_load() {
   unfunction node npm npx yarn pnpm 2>/dev/null
   eval "$(fnm env --use-on-cd --shell zsh)"
 }
-node() { _fnm_load && command node "$@" }
-npm() { _fnm_load && command npm "$@" }
-npx() { _fnm_load && command npx "$@" }
-yarn() { _fnm_load && command yarn "$@" }
-pnpm() { _fnm_load && command pnpm "$@" }
+node() {
+  if type _fnm_load &>/dev/null; then
+    _fnm_load && command node "$@"
+  else
+    command node "$@"
+  fi
+}
+npm() {
+  if type _fnm_load &>/dev/null; then
+    _fnm_load && command npm "$@"
+  else
+    command npm "$@"
+  fi
+}
+npx() {
+  if type _fnm_load &>/dev/null; then
+    _fnm_load && command npx "$@"
+  else
+    command npx "$@"
+  fi
+}
+yarn() {
+  if type _fnm_load &>/dev/null; then
+    _fnm_load && command yarn "$@"
+  else
+    command yarn "$@"
+  fi
+}
+pnpm() {
+  if type _fnm_load &>/dev/null; then
+    _fnm_load && command pnpm "$@"
+  else
+    command pnpm "$@"
+  fi
+}
 
 # ===== China Mirrors =====
 export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
